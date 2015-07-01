@@ -11,6 +11,7 @@ type Person struct {
 	Money float64
 	Male  bool
 }
+
 type Group struct {
 	People []*Person
 }
@@ -36,6 +37,10 @@ func TestMapSliceToString(t *testing.T) {
 
 	s, err = MapSliceToString(g.People, "ID")
 	assert.Equal(ErrNotString, err)
+}
+
+func ExampleMapSliceToString() {
+
 }
 
 func TestMapSliceToInt(t *testing.T) {
