@@ -39,10 +39,6 @@ func TestMapSliceToString(t *testing.T) {
 	assert.Equal(ErrNotString, err)
 }
 
-func ExampleMapSliceToString() {
-
-}
-
 func TestMapSliceToInt(t *testing.T) {
 	assert := assert.New(t)
 
