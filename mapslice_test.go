@@ -27,7 +27,7 @@ func TestMapSliceToString(t *testing.T) {
             {3, "Luda", 100, false},
 		},
 	}
-	s, err := MapSliceToString(g.People, "Name")
+	s, err := ToStrings(g.People, "Name")
 	assert.Nil(err)
 	assert.NotEmpty(s)
 	assert.Equal(s[0], "George")
@@ -35,7 +35,7 @@ func TestMapSliceToString(t *testing.T) {
     assert.Equal(s[2], "Ted")
     assert.Equal(s[3], "Luda")
 
-	s, err = MapSliceToString(g.People, "ID")
+	s, err = ToStrings(g.People, "ID")
 	assert.Equal(ErrNotString, err)
 }
 
@@ -51,7 +51,7 @@ func TestMapSliceToInt(t *testing.T) {
         },
     }
 
-	s, err := MapSliceToInt(g.People, "ID")
+	s, err := ToInts(g.People, "ID")
 	assert.Nil(err)
 	assert.NotEmpty(s)
 	assert.Equal(s[0], 0)
@@ -59,7 +59,7 @@ func TestMapSliceToInt(t *testing.T) {
     assert.Equal(s[2], 2)
     assert.Equal(s[3], 3)
 
-	s, err = MapSliceToInt(g.People, "Money")
+	s, err = ToInts(g.People, "Money")
 	assert.Equal(ErrNotInt, err)
 }
 
@@ -75,7 +75,7 @@ func TestMapSliceToFloat(t *testing.T) {
         },
     }
 
-    s, err := MapSliceToFloat(g.People, "Money")
+    s, err := ToFloats(g.People, "Money")
     assert.Nil(err)
     assert.NotEmpty(s)
     assert.Equal(s[0], 42.42)
@@ -83,7 +83,7 @@ func TestMapSliceToFloat(t *testing.T) {
     assert.Equal(s[2], 50.0)
     assert.Equal(s[3], 100.0)
 
-    s, err = MapSliceToFloat(g.People, "ID")
+    s, err = ToFloats(g.People, "ID")
     assert.Equal(ErrNotFloat, err)
 }
 
@@ -99,7 +99,7 @@ func TestMapSliceToBool(t *testing.T) {
         },
     }
 
-    s, err := MapSliceToBool(g.People, "Male")
+    s, err := ToBools(g.People, "Male")
     assert.Nil(err)
     assert.NotEmpty(s)
     assert.Equal(s[0], true)
@@ -107,6 +107,6 @@ func TestMapSliceToBool(t *testing.T) {
     assert.Equal(s[2], true)
     assert.Equal(s[3], false)
 
-    s, err = MapSliceToBool(g.People, "Name")
+    s, err = ToBools(g.People, "Name")
     assert.Equal(ErrNotBool, err)
 }
